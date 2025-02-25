@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}Chat List{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Available Groups</h2>
+    <ul class="list-group">
+        {% for group in groups %}
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                <div>
+                    <h5>{{ group.group_name }}</h5>
+                    <p>{{ group.description }}</p>
+                </div>
+                <a href="{% url 'group_chat' group.id %}" class="btn btn-primary">Join Chat</a>
+            </li>
+        {% empty %}
+            <li class="list-group-item">No groups found.</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}
